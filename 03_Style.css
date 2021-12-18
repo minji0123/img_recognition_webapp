@@ -3,6 +3,35 @@ body {
     background-color: #ffffff;
 }
 
+.main-title{
+    font-size: 36px; 
+    font-weight: 600; 
+    text-align: center;
+    
+}
+
+
+
+.title {
+    font-family: NanumSqureR;
+    line-height: 1.67;
+    text-align: center;
+    color: #35465d;
+}
+
+.subtitle {
+    font-family: NanumSqureR;
+    line-height: 1.53;
+    text-align: center;
+    color: #35465d;
+}
+
+
+
+
+
+
+
 .file-upload {
     /* background-color: #ffffff; */
     /* width: 600px; */
@@ -143,19 +172,18 @@ body {
     margin-top: 100px;
 }
 
-.title {
-    font-family: NanumSqureR;
-    line-height: 1.67;
-    text-align: center;
-    color: #35465d;
-}
 
-.subtitle {
-    font-family: NanumSqureR;
-    line-height: 1.53;
-    text-align: center;
-    color: #35465d;
-}
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* On screens that are 600px or less, set the background color to olive */
