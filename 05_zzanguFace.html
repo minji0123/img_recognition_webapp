@@ -12,6 +12,10 @@
 
     <title>Hello, world!</title>
     <link rel="stylesheet" href="05_style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic&display=swap" rel="stylesheet">
 </head>
 
 
@@ -55,11 +59,12 @@
             <div class="loading"></div>
             <div id="loading-text">loading</div>
         </div>
+        
+        
         <div class="container file-upload">
-
             <div class="image-upload-wrap">
-
                 <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                
                 <div class="drag-text">
                     <img src="upload.png" class="mt-5 pt-5 upload">
                     <h3 class="mb-5 pb-5 mt-3 upload-text">사진을 드래그로 올려놔보세요<br>(클릭해서 넣을수도 있어요)</h3>
@@ -79,7 +84,7 @@
 
         </div>
         <div>
-            <p style="margin-left:5px;">* 걱정하지 마세요! 머신러닝 AI모델을 사용하기 때문에 사진이 저장되지 않아요!</p>
+            <p class="para-letter">* 걱정하지 마세요! 머신러닝 AI모델을 사용하기 때문에 사진이 저장되지 않아요!</p>
             <br>
         </div>
     </div>

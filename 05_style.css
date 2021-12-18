@@ -5,10 +5,9 @@ body {
 
 
 .main-title{
-    font-size: 36px; 
-    font-weight: 600; 
+    font-size: 70px;
     text-align: center;
-    
+    font-family: 'Black Han Sans', sans-serif;
 }
 
 .sub-title{
@@ -18,59 +17,23 @@ body {
 }
 
 
-.title {
+.para-letter {
     font-family: NanumSqureR;
     /*     font-size: 44.5px; */
     line-height: 1.67;
     text-align: center;
     color: #35465d;
-}
-
-.subtitle {
-    /* width: 368px; */
-    /* height: 31px; */
-    font-family: NanumSqureR;
-    /* font-size: 33px; */
-    line-height: 1.53;
-    text-align: center;
-    color: #35465d;
+    margin-left:5px;
 }
 
 
 
 .file-upload {
     background-color: #ffffff;
-    /* width: 600px;
-    margin: 0 auto;
-    padding: 20px; */
+
 }
 
-.file-upload-btn {
-    width: 100%;
-    margin: 0;
-    color: #fff;
-    background: #1FB264;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    border-bottom: 4px solid #15824B;
-    transition: all .2s ease;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: 700;
-}
 
-.file-upload-btn:hover {
-    background: #1AA059;
-    color: #ffffff;
-    transition: all .2s ease;
-    cursor: pointer;
-}
-
-.file-upload-btn:active {
-    border: 0;
-    transition: all .2s ease;
-}
 
 .file-upload-content {
     display: none;
@@ -181,7 +144,7 @@ body {
     height: 50vw; */
     border-radius: 20px;
     border: solid 1.5px #f6f7fa;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .image-upload-wrap {
@@ -190,14 +153,15 @@ body {
     object-fit: contain;
     border-radius: 20px;
     border: dashed 1.5px #35465d;
-    transform: background-color 1s;
     background-color: #f8f8f8;
+    transition: background .5s;
 }
 
 .image-upload-wrap:hover {
-    background-color: #8dbc8e;
+    background: #8dbc8e;
     border: dashed 1.5px #141313;
 }
+
 
 .upload {
     width: 15%;
@@ -362,8 +326,24 @@ View codepen on my website: https://www.domsammut.com/projects/pure-css-loading-
 */
 
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
+    .container,
+    .container-sm {
+        max-width: 80%;
+    }
+    .main-title{
+        font-size: 50px;
+    }
+    .sub-title{
+        font-size: 15px;
+    }
+    .para-letter{
+        font-size: 13px;
+    }
+}
 
+
+@media screen and (max-width: 576px) {
     .container,
     .container-sm {
         max-width: 80%;
@@ -372,11 +352,8 @@ View codepen on my website: https://www.domsammut.com/projects/pure-css-loading-
 
 /* On screens that are 600px or less, set the background color to olive */
 @media screen and (max-width: 600px) {
-    html {
-        font-size: 10px;
-    }
-
-    .navbar-brand {
+    
+.navbar-brand {
         font-size: 2rem;
     }
 }
