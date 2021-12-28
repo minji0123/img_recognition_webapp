@@ -88,14 +88,19 @@
                 <img class="file-upload-image" id="face-image" src="#" alt="your image" />
                 <p class="result-message"></p>
                 <p class="result-Letter"></p>
-<!--                <img class="result-image">-->
+                <img class="result-image">
 
 
                 <div id="label-container"></div>
-                <canvas id="myChart" width="400" height="300"></canvas>
-                <div class="image-title-wrap">
-                    <button type="button" onclick="removeUpload()" class="remove-image">다시 해보기 <span class="image-title">Uploaded Image</span></button>
+                <div id="canvas-div">
+                    <canvas id="myChart" width="400" height="300"></canvas>
                 </div>
+                
+                
+                <div class="image-title-wrap">
+                    <button type="button" onclick="removeUpload()" class="remove-image">다시 해보기 </button>
+                </div>
+<!--                <span class="image-title">Uploaded Image</span>-->
             </div>
 
         </div>
@@ -175,6 +180,15 @@
         }
 
         function removeUpload() {
+            $('.result-message').html('');
+            $('.result-Letter').html('');
+            $('.result-image').attr('src', ''); 
+            $('#myChart').remove();
+            $('#canvas-div').html('<canvas id="myChart" width="400" height="300"></canvas>'); 
+
+            
+            
+            
             $('.file-upload-input').replaceWith($('.file-upload-input').clone());
             $('.file-upload-content').hide();
             $('.image-upload-wrap').show();
@@ -186,6 +200,9 @@
             $('.image-upload-wrap').removeClass('image-dropping');
         });
     </script>
+    
+    
+    
 
     <script type="text/javascript">
         const URL = "https://teachablemachine.withgoogle.com/models/wymJDU9tJ/";
@@ -224,32 +241,35 @@
                 case "짱구":
                     resultMessage = "당신은 짱구를 닮았네요!";
                     resultLetter = "낙천적인 성격에 개그를 정말로 잘하는 '사고뭉치'";
+                    resultImage = "/image/zang.png";
                     
                     break;
                 case "철수":
                     resultMessage = "당신은 철수를 닮았네요!";
                     resultLetter = "부잣집 도련님, 완벽주의자인 떡잎마을 방범대의 '리더'";
+                    resultImage = "/image/chul.png";
 
                     break;
                 case "유리":
                     resultMessage = "당신은 유리를 닮았네요!";
                     resultLetter = "털털하고 자기주장 강한 솔직한 성격을 가진 '깍쟁이'";
+                    resultImage = "/image/you.png";
 
                     break;
                 case "수지":
                     resultMessage = "당신은 수지를 닮았네요!";
                     resultLetter = "부잣집 아가씨이자 엄친딸, 외모까지 이쁜 '공주님'";
-//                    resultImage = 
+                    resultImage = "/image/sou.png";
                     break;
                 case "맹구":
                     resultMessage = "당신은 맹구를 닮았네요!";
                     resultLetter = "매우 과묵하며, 매사에 행동이 느릿느릿하고 멍한 '조력자'";
-
+                    resultImage = "/image/mang.png";
                     break;
                 case "훈이":
                     resultMessage = "당신은 훈이를 닮았네요!";
                     resultLetter = "상냥하고 솔직한 성격을 지녔지만 엄청난 울보에 겁이 많은 '찌질이'";
-
+                    resultImage = "/image/hunn.png";
                     break;
                 default:
                     resultMessage = "당신은 누굴 닮았죠?!";
@@ -259,6 +279,7 @@
 
             $('.result-message').html(resultMessage);
             $('.result-Letter').html(resultLetter);
+            $('.result-image').attr('src', resultImage);
 
             colors = ['rgba(205, 197, 180, 1)',
                 'rgba(181, 157, 164, 1)',
@@ -288,8 +309,10 @@
 
 
             /*차트*/
+            
             let ctx = document.getElementById('myChart').getContext('2d');
-
+//            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
             let myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -305,8 +328,7 @@
                         }
                     }
                 } // 옵션 끝
-
-
+ 
             });
         }
     </script>
