@@ -1,5 +1,5 @@
 body {
-    font-family: sans-serif;
+    font-family: 'Gowun Dodum', sans-serif;
     background-color: #feffee;
 }
 
@@ -8,6 +8,7 @@ body {
     font-size: 70px;
     text-align: center;
     font-family: 'Black Han Sans', sans-serif;
+    color: #35465d;
 }
 
 .sub-title{
@@ -18,8 +19,6 @@ body {
 
 
 .para-letter {
-    font-family: NanumSqureR;
-    /*     font-size: 44.5px; */
     line-height: 1.67;
     text-align: center;
     color: #35465d;
@@ -30,7 +29,6 @@ body {
 
 .file-upload {
     background-color: #ffffff;
-
 }
 
 
@@ -136,8 +134,6 @@ body {
 
 
 
-
-
 .file-upload {
     padding: 5% 3%;
     /* width: 914px;
@@ -168,7 +164,6 @@ body {
 }
 
 .upload-text {
-    font-family: NanumSqureR;
     font-size: 1rem;
     line-height: 1.53;
     text-align: center;
@@ -178,15 +173,16 @@ body {
 
 
 
+/*
 .main-background {
     width: 100%;
     height: 100%;
-/*    background-image: url(../downloads/pajamas.jpeg);*/
     background-size: cover;
     color: #35465d;
     border-radius: 0px;
     
 }
+*/
 
 
 /** BEGIN CSS **/
