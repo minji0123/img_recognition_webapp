@@ -58,12 +58,6 @@
         <!--    </section>-->
         <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
-        <div class="loading-container loading-body">
-            <div class="loading"></div>
-            <div id="loading-text">loading</div>
-        </div>
-
-
         <div class="container file-upload">
             <div class="image-upload-wrap">
                 <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
@@ -76,22 +70,53 @@
 
 
             <div class="file-upload-content">
+                <h1>인공지능이 판단한 당신은?!</h1>
                 <img class="file-upload-image" id="face-image" src="#" alt="your image" />
-                <p class="result-message"></p>
-                <p class="result-Letter"></p>
-                <img class="result-image">
 
+               <div class="loading-body">
+<!--                        <div class="loading"></div>-->
+                        <p style="margin-top: 20px;">얼굴 분석중이에요...</p>
+                        <img src="image/loading.gif" style="width:100%;">
+<!--                        <div id="loading-text">분석중이에요</div>-->
+                    </div>
+                    
+                <div class="result-div">
+                   
+<!--
+                    <div class="loading-container loading-body">
+                        <div class="loading"></div>
+                        <h2>얼굴 분석중이에요...</h2>
+                        <img src="image/giphy.gif" style="width:100%;">
+                        <div id="loading-text">분석중이에요</div>
+                    </div>
+-->
+                    
+                    
+                    
+                    <h2 class="result-message"></h2>
+                    <p class="result-Letter"></p>
+                    <img class="result-image">
 
-                <div id="label-container"></div>
-                <div id="canvas-div">
-                    <canvas id="myChart" width="400" height="300"></canvas>
+                    <hr>
+
+                    <h3 class="result-ana-title"></h3>
+                    <p class="result-ana"></p>
+                    <div id="label-container"></div>
+                    <div id="canvas-div">
+                        <canvas id="myChart" width="400" height="300"></canvas>
+                    </div>
                 </div>
-                
-                
+
+
+
+
+
+
+
                 <div class="image-title-wrap">
-                    <button type="button" onclick="removeUpload()" class="remove-image">다시 해보기 </button>
+                    <button type="button" onclick="removeUpload()" class="remove-image">다시 해볼래요?</button>
                 </div>
-<!--                <span class="image-title">Uploaded Image</span>-->
+                <!--                <span class="image-title">Uploaded Image</span>-->
             </div>
 
         </div>
@@ -105,10 +130,14 @@
     <script>
         function showLoading() {
             $(".loading-body").show();
+            $(".result-div").hide();
+            
         }
 
         function hideLoading() {
             $(".loading-body").hide();
+            $(".result-div").show();
+
         }
     </script>
 
@@ -145,7 +174,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
     <script>
-        
         function readURL(input) {
             if (input.files && input.files[0]) {
 
@@ -172,16 +200,19 @@
         }
 
         function removeUpload() {
-        $('.result-message').html('');
-        $('.result-Letter').html('');
-        $('.result-image').attr('src', ''); 
-        $('#myChart').remove();
-        $('#canvas-div').html('<canvas id="myChart" width="400" height="300"></canvas>'); 
+            $('.result-message').html('');
+            $('.result-Letter').html('');
+            $('.result-image').attr('src', '');
+            $('.result-ana-title').html('');
+            $('.result-ana').html('');
+            
+            $('#myChart').remove();
+            $('#canvas-div').html('<canvas id="myChart" width="400" height="300"></canvas>');
 
 
-        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-        $('.file-upload-content').hide();
-        $('.image-upload-wrap').show();
+            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+            $('.file-upload-content').hide();
+            $('.image-upload-wrap').show();
         }
         $('.image-upload-wrap').bind('dragover', function() {
             $('.image-upload-wrap').addClass('image-dropping');
@@ -190,9 +221,9 @@
             $('.image-upload-wrap').removeClass('image-dropping');
         });
     </script>
-    
-    
-    
+
+
+
 
     <script type="text/javascript">
         const URL = "https://teachablemachine.withgoogle.com/models/wymJDU9tJ/";
@@ -226,43 +257,60 @@
 
             let resultMessage;
             let resultLetter;
-//            let resultImage;
+            let resultAnalysis;
+            let resultAnaTitle;
+
             switch (prediction[0].className) {
                 case "짱구":
-                    resultMessage = "당신은 짱구를 닮았네요!";
+                    resultMessage = "짱구를 닮았네요!";
                     resultLetter = "낙천적인 성격에 개그를 정말로 잘하는 '사고뭉치'";
                     resultImage = "./image/zang.png";
-                    
+                    resultAnaTitle = "짱구는..."
+                    resultAnalysis = "◽ 신나있어요<br>◽ 눈이 동그래요<br>◽ 중안부가 보통이에요";
                     break;
+
                 case "철수":
-                    resultMessage = "당신은 철수를 닮았네요!";
+                    resultMessage = "철수를 닮았네요!";
                     resultLetter = "부잣집 도련님, 완벽주의자인 떡잎마을 방범대의 '리더'";
                     resultImage = "./image/chul.png";
-
+                    resultAnaTitle = "철수는...";
+                    resultAnalysis = "◽ 인상이 쎄요<br>◽ 눈이 또렷해요<br>◽ 중안부가 보통이에요";
                     break;
+
                 case "유리":
-                    resultMessage = "당신은 유리를 닮았네요!";
+                    resultMessage = "유리를 닮았네요!";
                     resultLetter = "털털하고 자기주장 강한 솔직한 성격을 가진 '깍쟁이'";
                     resultImage = "./image/you.png";
-
+                    resultAnaTitle = "유리는...";
+                    resultAnalysis = "◽ 인상이 순해요<br>◽ 눈이 초롱초롱해요<br>◽ 중안부가 보통이에요";
                     break;
+
                 case "수지":
-                    resultMessage = "당신은 수지를 닮았네요!";
+                    resultMessage = "수지를 닮았네요!";
                     resultLetter = "부잣집 아가씨이자 엄친딸, 외모까지 이쁜 '공주님'";
                     resultImage = "./image/sou.png";
+                    resultAnaTitle = "수지는...";
+                    resultAnalysis = "◽ 인상이 새침해요<br>◽ 눈이 매우 커요<br>◽ 중안부가 보통이에요";
                     break;
+
                 case "맹구":
-                    resultMessage = "당신은 맹구를 닮았네요!";
-                    resultLetter = "매우 과묵하며, 매사에 행동이 느릿느릿하고 멍한 '조력자'";
+                    resultMessage = "맹구를 닮았네요!";
+                    resultLetter = "매우 과묵하며, 매사에 행동이 느릿느릿하고 멍한 '거북이'";
                     resultImage = "./image/mang.png";
+                    resultAnaTitle = "맹구는...";
+                    resultAnalysis = "◽ 인상이 순해요<br>◽ 눈이 작아요<br>◽ 중안부가 길어요";
                     break;
+
                 case "훈이":
-                    resultMessage = "당신은 훈이를 닮았네요!";
+                    resultMessage = "훈이를 닮았네요!";
                     resultLetter = "상냥하고 솔직한 성격을 지녔지만 엄청난 울보에 겁이 많은 '찌질이'";
                     resultImage = "./image/hunn.png";
+                    resultAnaTitle = "훈이는...";
+                    resultAnalysis = "◽ 울상이에요<br>◽ 눈이 작아요<br>◽ 중안부가 짧아요";
                     break;
+
                 default:
-                    resultMessage = "당신은 누굴 닮았죠?!";
+                    resultMessage = "누구도 닮지 않았네요?!";
                     resultLetter = "정보가 없어요";
                     break;
             }
@@ -270,6 +318,8 @@
             $('.result-message').html(resultMessage);
             $('.result-Letter').html(resultLetter);
             $('.result-image').attr('src', resultImage);
+            $('.result-ana-title').html(resultAnaTitle);
+            $('.result-ana').html(resultAnalysis);
 
             colors = ['rgba(205, 197, 180, 1)',
                 'rgba(181, 157, 164, 1)',
@@ -299,10 +349,10 @@
 
 
             /*차트*/
-            
+
             let ctx = document.getElementById('myChart').getContext('2d');
-//            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+            //            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
             let myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -318,7 +368,7 @@
                         }
                     }
                 } // 옵션 끝
- 
+
             });
         }
     </script>
