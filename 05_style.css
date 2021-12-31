@@ -2,6 +2,7 @@ body {
     font-family: 'Gowun Dodum', sans-serif;
     background-color: #feffee;
     text-align: center;
+    color: #35465d;
 
 }
 
@@ -19,31 +20,55 @@ body {
 
 .para-letter {
     line-height: 1.67;
-    color: #35465d;
     margin-left: 5px;
 }
 
 .upload-text {
-/*    font-size: 1rem;*/
     font-size: 20px;
     line-height: 1.53;
-    color: #35465d;
     margin: 0 auto;
 }
 
-
-
 .file-upload {
-    background-color: #ffffff;
+    padding: 5% 3%;
+        max-width: 80%;
+    /* width: 914px;
+    height: 50vw; */
+/*    border-radius: 20px;*/
+/*    border: solid 1.5px #f6f7fa;*/
+/*    background-color: rgba(255, 255, 255, 0.3);*/
 }
 
-.file-upload-content {
-    display: none;
-    text-align: center;
+
+
+
+.image-upload-wrap {
+/*     margin-top: 20px; */
+    border: 10px dashed #1FB264;
+    position: relative;
+    
+    width: 70%;
+    height: 50%;
+    margin: 0 auto;
+    object-fit: contain;
+    border-radius: 20px;
+    border: solid 1.5px #35465d;
+    background-color: #f8f8f8;
+    transition: background 1s;
+/*    transition: all 1s;*/
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+/*    background: #8dbc8e;*/
+    background: #35465d;
+    color: aliceblue;
+    border: solid 1.5px #141313;
 }
 
 .file-upload-input {
     position: absolute;
+    
     margin: 0;
     padding: 0;
     width: 100%;
@@ -53,16 +78,17 @@ body {
     cursor: pointer;
 }
 
-.image-upload-wrap {
-    /* margin-top: 20px; */
-    border: 4px dashed #1FB264;
-    position: relative;
+
+.file-upload-image {
+    max-height: 200px;
+    max-width: 200px;
+    margin: auto;
+    padding: 20px;
 }
 
-.image-dropping,
-.image-upload-wrap:hover {
-    background-color: #1FB264;
-    border: 4px dashed #ffffff;
+
+.file-upload-content {
+    display: none;
 }
 
 .image-title-wrap {
@@ -81,12 +107,8 @@ body {
     /* padding: 60px 0; */
 }
 
-.file-upload-image {
-    max-height: 200px;
-    max-width: 200px;
-    margin: auto;
-    padding: 20px;
-}
+
+
 
 .remove-image {
     width: 200px;
@@ -140,29 +162,9 @@ body {
 
 
 
-.file-upload {
-    padding: 5% 3%;
-    /* width: 914px;
-    height: 50vw; */
-    border-radius: 20px;
-    border: solid 1.5px #f6f7fa;
-    background-color: rgba(255, 255, 255, 0.3);
-}
 
-.image-upload-wrap {
-    width: 65%;
-    margin: 0 auto;
-    object-fit: contain;
-    border-radius: 20px;
-    border: dashed 1.5px #35465d;
-    background-color: #f8f8f8;
-    transition: background .5s;
-}
 
-.image-upload-wrap:hover {
-    background: #8dbc8e;
-    border: dashed 1.5px #141313;
-}
+
 
 
 .upload {
@@ -196,9 +198,11 @@ View codepen on my website: https://www.domsammut.com/projects/pure-css-loading-
 
 @media screen and (max-width: 768px) {
 
+/*
     .container {
         max-width: 80%;
     }
+*/
 
     .main-title {
         font-size: 70px;
@@ -219,9 +223,12 @@ View codepen on my website: https://www.domsammut.com/projects/pure-css-loading-
 
 @media screen and (max-width: 576px) {
 
+/*
     .container{
         max-width: 80%;
     }
+*/
+    
     .navbar-brand {
         font-size: 2rem;
     }
