@@ -5,12 +5,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/image/corgi.png" type="image/x-icon">
+    <title>짱구 케릭터 테스트</title>
+    
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js"></script>
 
-    <title>Hello, world!</title>
     <!-- css 파일 -->
     <link rel="stylesheet" href="05_style.css">
 
@@ -20,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=PT+Sans&family=Pushster&display=swap" rel="stylesheet">
     
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js"></script>
 </head>
 
 
@@ -65,12 +66,12 @@
 
 
             <div class="file-upload-content">
-                <h1>인공지능이 판단한 당신은?!</h1>
+                <h1 class="result-message-title">인공지능이 판단한 당신은?!</h1>
                 <img class="file-upload-image" id="face-image" src="#" alt="your image" />
 
                <div class="loading-body">
 <!--                        <div class="loading"></div>-->
-                        <p style="margin-top: 20px;">얼굴 분석중이에요...</p>
+                        <p class="sub-title" style="margin-top: 20px;">얼굴 분석중이에요...</p>
                         <img src="image/loading.gif" style="width:70%;">
 
                 </div>
@@ -88,10 +89,10 @@
                     
                     <div id="label-container"></div>
                     <div id="canvas-div">
-                        <canvas id="myChart" width="400" height="300"></canvas>
+                        <canvas id="myChart" style="width: 100%; height: 400px;"></canvas>
                     </div>
                 </div>
-
+                
                 <div class="image-title-wrap">
                     <button type="button" onclick="removeUpload()" class="remove-image">다시 해볼래요?</button>
                 </div>
@@ -100,50 +101,11 @@
         </div>
 <!--  여기까지  file upload  -->
         
-        
-        
-        
         <div>
             <p class="para-letter">걱정하지 마세요! 머신러닝 AI모델을 사용하기 때문에 사진이 저장되지 않아요!</p>
             <br>
         </div>
     </div>
-
-
-    <script>
-        function showLoading() {
-            $(".loading-body").show();
-            $(".result-div").hide();
-            
-        }
-
-        function hideLoading() {
-            $(".loading-body").hide();
-            $(".result-div").show();
-
-        }
-    </script>
-
-    <script>
-        /**
-         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-        /*
-        var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        */
-        (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document,
-                s = d.createElement('script');
-            s.src = 'https://minji0123.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -156,206 +118,11 @@
     -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
-    <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
 
-                var reader = new FileReader();
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
-                reader.onload = function(e) {
-                    $('.image-upload-wrap').hide();
-                    $('.file-upload-image').attr('src', e.target.result);
-                    $('.file-upload-content').show();
-                    $('.image-title').html(input.files[0].name);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-                console.log('whatthe');
-                showLoading();
-
-                init().then(() => {
-                    predict();
-                    hideLoading();
-                });
-            } else {
-                removeUpload();
-            }
-        }
-
-        function removeUpload() {
-            $('.result-message').html('');
-            $('.result-Letter').html('');
-            $('.result-image').attr('src', '');
-            $('.result-ana-title').html('');
-            $('.result-ana').html('');
-            
-            $('#myChart').remove();
-            $('#canvas-div').html('<canvas id="myChart" width="400" height="300"></canvas>');
-
-
-            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-            $('.file-upload-content').hide();
-            $('.image-upload-wrap').show();
-        }
-        $('.image-upload-wrap').bind('dragover', function() {
-            $('.image-upload-wrap').addClass('image-dropping');
-        });
-        $('.image-upload-wrap').bind('dragleave', function() {
-            $('.image-upload-wrap').removeClass('image-dropping');
-        });
+    <script src="character.js">
     </script>
-
-
-
-
-    <script type="text/javascript">
-        const URL = "https://teachablemachine.withgoogle.com/models/wymJDU9tJ/";
-
-        let model, labelContainer, maxPredictions;
-
-        async function init() {
-            const modelURL = URL + "model.json";
-            const metadataURL = URL + "metadata.json";
-
-
-            model = await tmImage.load(modelURL, metadataURL);
-            maxPredictions = model.getTotalClasses();
-
-
-            labelContainer = document.getElementById("label-container");
-            for (let i = 0; i < maxPredictions; i++) {
-                labelContainer.appendChild(document.createElement("div"));
-            }
-        }
-
-
-        async function predict() {
-            let image = document.getElementById("face-image")
-            const prediction = await model.predict(image, false);
-
-            prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
-            console.log(prediction);
-            console.log(prediction[0].className);
-
-
-            let resultMessage;
-            let resultLetter;
-            let resultAnalysis;
-            let resultAnaTitle;
-
-            switch (prediction[0].className) {
-                case "짱구":
-                    resultMessage = "짱구를 닮았네요!";
-                    resultLetter = "낙천적인 성격에 개그를 정말로 잘하는 '사고뭉치'";
-                    resultImage = "./image/zang.png";
-                    resultAnaTitle = "짱구는..."
-                    resultAnalysis = "◽ 신나있어요<br>◽ 눈이 동그래요<br>◽ 중안부가 보통이에요";
-                    break;
-
-                case "철수":
-                    resultMessage = "철수를 닮았네요!";
-                    resultLetter = "부잣집 도련님, 완벽주의자인 떡잎마을 방범대의 '리더'";
-                    resultImage = "./image/chul.png";
-                    resultAnaTitle = "철수는...";
-                    resultAnalysis = "◽ 인상이 쎄요<br>◽ 눈이 또렷해요<br>◽ 중안부가 보통이에요";
-                    break;
-
-                case "유리":
-                    resultMessage = "유리를 닮았네요!";
-                    resultLetter = "털털하고 자기주장 강한 솔직한 성격을 가진 '깍쟁이'";
-                    resultImage = "./image/you.png";
-                    resultAnaTitle = "유리는...";
-                    resultAnalysis = "◽ 인상이 순해요<br>◽ 눈이 초롱초롱해요<br>◽ 중안부가 보통이에요";
-                    break;
-
-                case "수지":
-                    resultMessage = "수지를 닮았네요!";
-                    resultLetter = "부잣집 아가씨이자 엄친딸, 외모까지 이쁜 '공주님'";
-                    resultImage = "./image/sou.png";
-                    resultAnaTitle = "수지는...";
-                    resultAnalysis = "◽ 인상이 새침해요<br>◽ 눈이 매우 커요<br>◽ 중안부가 보통이에요";
-                    break;
-
-                case "맹구":
-                    resultMessage = "맹구를 닮았네요!";
-                    resultLetter = "매우 과묵하며, 매사에 행동이 느릿느릿하고 멍한 '거북이'";
-                    resultImage = "./image/mang.png";
-                    resultAnaTitle = "맹구는...";
-                    resultAnalysis = "◽ 인상이 순해요<br>◽ 눈이 작아요<br>◽ 중안부가 길어요";
-                    break;
-
-                case "훈이":
-                    resultMessage = "훈이를 닮았네요!";
-                    resultLetter = "상냥하고 솔직한 성격을 지녔지만 엄청난 울보에 겁이 많은 '찌질이'";
-                    resultImage = "./image/hunn.png";
-                    resultAnaTitle = "훈이는...";
-                    resultAnalysis = "◽ 울상이에요<br>◽ 눈이 작아요<br>◽ 중안부가 짧아요";
-                    break;
-
-                default:
-                    resultMessage = "누구도 닮지 않았네요?!";
-                    resultLetter = "정보가 없어요";
-                    break;
-            }
-
-            $('.result-message').html(resultMessage);
-            $('.result-Letter').html(resultLetter);
-            $('.result-image').attr('src', resultImage);
-            $('.result-ana-title').html(resultAnaTitle);
-            $('.result-ana').html(resultAnalysis);
-
-            colors = ['rgba(205, 197, 180, 1)',
-                'rgba(181, 157, 164, 1)',
-                'rgba(133, 117, 110, 1)',
-                'rgba(109, 61, 20, 1)',
-                'rgba(85, 27, 20, 1)',
-                'rgba(4, 42, 43, 1)'
-            ];
-
-            characters = [];
-            chart_json = [];
-
-
-            for (let i = 0; i < prediction.length; i++) {
-                chart_json.push({
-                    label: prediction[i].className,
-                    data: [prediction[i].probability],
-                    backgroundColor: colors[i],
-                    borderColor: colors[i],
-                    borderWidth: 1
-                });
-                characters.push(
-                    prediction[i].className
-                );
-            }
-
-
-
-            /*차트*/
-
-            let ctx = document.getElementById('myChart').getContext('2d');
-            //            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            let myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: [''],
-                    datasets: chart_json
-                },
-
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                } // 옵션 끝
-
-            });
-        }
-    </script>
-<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </body>
 <!-- Copyright (c) 2021 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software
 without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
